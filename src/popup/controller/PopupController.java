@@ -6,27 +6,33 @@ public class PopupController
 {
 	private PopupViewer display;
 
-	public PopupController(){
+	public PopupController()
+	{
 		display = new PopupViewer();
 	}
-	
+
 	public void start()
 	{
-		
-		awesome();
-		
-		
+
+		awesome("What is the password", "carl rulez");
+		awesome("What is my name", "carl jenkins");
+
 	}
-	
-	public void awesome(){
-		String aaronAwesome = display.collectResponse("Is Aaron awesome?");
-		if(aaronAwesome.equalsIgnoreCase("yes")){
+
+	public void awesome(String question, String acceptableAnswer)
+	{
+		String aaronAwesome = display.collectResponse(question);
+		
+			
+	 if(aaronAwesome.equalsIgnoreCase(acceptableAnswer)){
 			display.displayMessage("This is true");
 		}
-		else{
-			display.displayMessage("You are Wrong");
-			awesome();
-		}
 		
+		else if(!aaronAwesome.equalsIgnoreCase(acceptableAnswer))
+		{
+			display.displayMessage("You are Wrong");
+			awesome(question,acceptableAnswer);
+		}
 	}
+	
 }

@@ -16,5 +16,14 @@ public class PopupViewer
 		JOptionPane.showMessageDialog(null, message);
 
 	}
-	 
+
+	public String collectResponse(String question)
+	{
+		String response = "";
+		response = JOptionPane.showInputDialog(null, question);
+		
+		return response;
+	}
+
 }
+

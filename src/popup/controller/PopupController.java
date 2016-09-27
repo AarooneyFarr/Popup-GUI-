@@ -14,9 +14,10 @@ public class PopupController
 	public void start()
 	{
 
-		awesome("What is the password", "carl rulez");
-		awesome("What is my name", "carl jenkins");
+		awesome("Username?", "Aaron Farr");
 
+		awesome("Password?", "Aaron rules");
+		
 	}
 
 	public void awesome(String question, String acceptableAnswer)

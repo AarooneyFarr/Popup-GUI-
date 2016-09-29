@@ -1,31 +1,41 @@
 package popup.controller;
 
 import popup.view.PopupViewer;
+import java.util.List;
+import java.util.ArrayList;
+import popup.model.PopupThingy;
 
 public class PopupController
 {
 	private PopupViewer display;
+	private List<PopupThingy> thingyList;
 
 	public PopupController()
 	{
 		display = new PopupViewer();
+		thingyList = new ArrayList<PopupThingy>();
 	}
 
 	public void start()
 	{
+	
+		
+		//questionCheck("Username?", "Aaron Farr", "string");
 
-		questionCheck("Username?", "Aaron Farr","string");
+		//questionCheck("Password?", "Aaron rules", "string");
 
-		questionCheck("Password?", "Aaron rules", "string");
+		questionCheck("Age?", "16", "int");
 
 	}
 
 	public void questionCheck(String question, String correctAnswer, String answerType)
 	{
-
-		if (answerType.equalsIgnoreCase("int") && isInteger(correctAnswer))
+		String userAnswer = display.collectResponse(question);
+		
+		if (answerType.equalsIgnoreCase("int")/* && isInteger(userAnswer)*/)
 		{
 			int numberAnswer = Integer.parseInt(display.collectResponse(question));
+			isInteger(userAnswer);
 
 			if (numberAnswer == Integer.parseInt(correctAnswer))
 			{
@@ -35,14 +45,11 @@ public class PopupController
 			else if (numberAnswer != Integer.parseInt(correctAnswer))
 			{
 				display.displayMessage("You are Wrong");
-				questionCheck(question, correctAnswer, answerType);
+				//questionCheck(question, correctAnswer, answerType);
 			}
-			else
-			{
-				display.displayMessage("Error");
-			}
+			
 		}
-		else if (answerType.equalsIgnoreCase("double") && isDouble(correctAnswer))
+		else if (answerType.equalsIgnoreCase("double") && isDouble(userAnswer))
 		{
 
 			double numberAnswer = Double.parseDouble(display.collectResponse(question));
@@ -57,10 +64,12 @@ public class PopupController
 				display.displayMessage("You are Wrong");
 				questionCheck(question, correctAnswer, answerType);
 			}
-			else
-			{
-				display.displayMessage("Error");
-			}
+			
+		}
+		else if (answerType.equalsIgnoreCase("int") && !isInteger(userAnswer) || answerType.equalsIgnoreCase("double") && !isDouble(userAnswer))
+		{
+			
+			questionCheck(question, correctAnswer, answerType);
 		}
 		else
 		{
@@ -76,10 +85,7 @@ public class PopupController
 				display.displayMessage("You are Wrong");
 				questionCheck(question, correctAnswer, answerType);
 			}
-			else
-			{
-				display.displayMessage("Error");
-			}
+			
 		}
 
 	}
@@ -93,7 +99,7 @@ public class PopupController
 			int validInteger = Integer.parseInt(input);
 			isInt = true;
 		}
-		catch (NumberFormatException Error)
+		catch (NumberFormatException error)
 		{
 			display.displayMessage("You did not enter a valid integer");
 		}
@@ -110,7 +116,7 @@ public class PopupController
 			Double validDouble = Double.parseDouble(input);
 			isDouble = true;
 		}
-		catch (NumberFormatException Error)
+		catch (NumberFormatException error)
 		{
 			display.displayMessage("You did not enter a valid number");
 		}

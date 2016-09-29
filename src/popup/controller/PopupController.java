@@ -18,11 +18,10 @@ public class PopupController
 
 	public void start()
 	{
-	
-		
-		//questionCheck("Username?", "Aaron Farr", "string");
 
-		//questionCheck("Password?", "Aaron rules", "string");
+		// questionCheck("Username?", "Aaron Farr", "string");
+
+		// questionCheck("Password?", "Aaron rules", "string");
 
 		questionCheck("Age?", "16", "int");
 
@@ -31,10 +30,10 @@ public class PopupController
 	public void questionCheck(String question, String correctAnswer, String answerType)
 	{
 		String userAnswer = display.collectResponse(question);
-		
-		if (answerType.equalsIgnoreCase("int")/* && isInteger(userAnswer)*/)
+
+		if (answerType.equalsIgnoreCase("int")/* && isInteger(userAnswer) */)
 		{
-			int numberAnswer = Integer.parseInt(display.collectResponse(question));
+			int numberAnswer = Integer.parseInt(userAnswer);
 			isInteger(userAnswer);
 
 			if (numberAnswer == Integer.parseInt(correctAnswer))
@@ -45,9 +44,9 @@ public class PopupController
 			else if (numberAnswer != Integer.parseInt(correctAnswer))
 			{
 				display.displayMessage("You are Wrong");
-				//questionCheck(question, correctAnswer, answerType);
+				questionCheck(question, correctAnswer, answerType);
 			}
-			
+
 		}
 		else if (answerType.equalsIgnoreCase("double") && isDouble(userAnswer))
 		{
@@ -64,11 +63,11 @@ public class PopupController
 				display.displayMessage("You are Wrong");
 				questionCheck(question, correctAnswer, answerType);
 			}
-			
+
 		}
 		else if (answerType.equalsIgnoreCase("int") && !isInteger(userAnswer) || answerType.equalsIgnoreCase("double") && !isDouble(userAnswer))
 		{
-			
+
 			questionCheck(question, correctAnswer, answerType);
 		}
 		else
@@ -85,7 +84,7 @@ public class PopupController
 				display.displayMessage("You are Wrong");
 				questionCheck(question, correctAnswer, answerType);
 			}
-			
+
 		}
 
 	}
@@ -123,5 +122,13 @@ public class PopupController
 		return isDouble;
 
 	}
+
+	/*private void learnLists()
+	{
+		display.displayMessage(thingyList.size());
+		Thingy testThingy = new Thingy();
+		thingyList.add(testThingy);
+		display.Message(thingyList.size());	
+	}*/
 
 }

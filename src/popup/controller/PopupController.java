@@ -14,36 +14,80 @@ public class PopupController
 	public void start()
 	{
 
-		awesome("Username?", "Aaron Farr");
+		questionCheck("Username?", "Aaron Farr","string");
 
-		awesome("Password?", "Aaron rules");
+		questionCheck("Password?", "Aaron rules", "string");
 
 	}
 
-	public void awesome(String question, String acceptableAnswer)
+	public void questionCheck(String question, String correctAnswer, String answerType)
 	{
-		String aaronAwesome = display.collectResponse(question);
 
-		if (aaronAwesome.equalsIgnoreCase(acceptableAnswer))
+		if (answerType.equalsIgnoreCase("int") && isInteger(correctAnswer))
 		{
-			display.displayMessage("This is true");
+			int numberAnswer = Integer.parseInt(display.collectResponse(question));
+
+			if (numberAnswer == Integer.parseInt(correctAnswer))
+			{
+				display.displayMessage("This is true");
+			}
+
+			else if (numberAnswer != Integer.parseInt(correctAnswer))
+			{
+				display.displayMessage("You are Wrong");
+				questionCheck(question, correctAnswer, answerType);
+			}
+			else
+			{
+				display.displayMessage("Error");
+			}
 		}
-
-		else if (!aaronAwesome.equalsIgnoreCase(acceptableAnswer))
+		else if (answerType.equalsIgnoreCase("double") && isDouble(correctAnswer))
 		{
-			display.displayMessage("You are Wrong");
-			awesome(question, acceptableAnswer);
+
+			double numberAnswer = Double.parseDouble(display.collectResponse(question));
+
+			if (numberAnswer == Double.parseDouble(correctAnswer))
+			{
+				display.displayMessage("This is true");
+			}
+
+			else if (numberAnswer != Double.parseDouble(correctAnswer))
+			{
+				display.displayMessage("You are Wrong");
+				questionCheck(question, correctAnswer, answerType);
+			}
+			else
+			{
+				display.displayMessage("Error");
+			}
 		}
 		else
 		{
-			display.displayMessage("Error");
+			String aaronAwesome = display.collectResponse(question);
+
+			if (aaronAwesome.equalsIgnoreCase(correctAnswer))
+			{
+				display.displayMessage("This is true");
+			}
+
+			else if (!aaronAwesome.equalsIgnoreCase(correctAnswer))
+			{
+				display.displayMessage("You are Wrong");
+				questionCheck(question, correctAnswer, answerType);
+			}
+			else
+			{
+				display.displayMessage("Error");
+			}
 		}
+
 	}
 
 	private boolean isInteger(String input)
 	{
 		boolean isInt = false;
-		
+
 		try
 		{
 			int validInteger = Integer.parseInt(input);
@@ -56,10 +100,11 @@ public class PopupController
 		return isInt;
 
 	}
+
 	private boolean isDouble(String input)
 	{
 		boolean isDouble = false;
-		
+
 		try
 		{
 			Double validDouble = Double.parseDouble(input);

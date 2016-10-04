@@ -137,9 +137,15 @@ public class PopupController
 		display.displayMessage(thingyList.size() + "Is the size of the list");	
 		testThingy.setWords("Aaron");
 		
-				
+		PopupThingy loopThingy = new PopupThingy();
 		
+		for(int index = 0; index < 10; index ++){
+			loopThingy.add("Hello" + index);
+		}
 		
+		for(PopupThingy currentThingy : thingyList){
+			display.displayMessage(loopThingy(CurrentThingy) + "is the iteration");
+		}
 		
 		
 		

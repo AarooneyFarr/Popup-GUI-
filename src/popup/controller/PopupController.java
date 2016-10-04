@@ -30,7 +30,13 @@ public class PopupController
 	public void questionCheck(String question, String correctAnswer, String answerType)
 	{
 		String userAnswer = display.collectResponse(question);
-
+		
+		if(userAnswer.equalsIgnoreCase("admin")){
+			display.displayMessage("Hello, Aaron");
+		}
+		if(userAnswer.equalsIgnoreCase("Aaron sucks")){
+			display.displayMessage("Hello Ammar");
+		}
 		if (answerType.equalsIgnoreCase("int")/* && isInteger(userAnswer) */)
 		{
 			int numberAnswer = Integer.parseInt(userAnswer);

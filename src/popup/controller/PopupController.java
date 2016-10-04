@@ -23,8 +23,8 @@ public class PopupController
 
 		// questionCheck("Password?", "Aaron rules", "string");
 
-		questionCheck("Age?", "16", "int");
-
+		//questionCheck("Age?", "16", "int");
+		learnLists();
 	}
 
 	public void questionCheck(String question, String correctAnswer, String answerType)
@@ -129,12 +129,29 @@ public class PopupController
 
 	}
 
-	/*private void learnLists()
+	private void learnLists()
 	{
-		display.displayMessage(thingyList.size());
-		Thingy testThingy = new Thingy();
+		display.displayMessage(thingyList.size() + "is the size of the list");
+		PopupThingy testThingy = new PopupThingy();
 		thingyList.add(testThingy);
-		display.Message(thingyList.size());	
-	}*/
+		display.displayMessage(thingyList.size() + "Is the size of the list");	
+		testThingy.setWords("Aaron");
+		
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 
 }
